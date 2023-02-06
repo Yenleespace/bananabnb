@@ -2,23 +2,32 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import configureStore from './store';
 import { restoreSession } from './store/csrf';
-import { createUser, loginUser, logoutUser } from './store/userReducer'; 
+import { createUser, loginUser, logoutUser } from './store/usersReducer.js';
+import { Provider } from 'react-redux';
 
 
+let currentUser;
 
-let currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+if (sessionStorage.getItem('currentUser') !== "undefined") {
+  currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+}
+
 let initialState = {};
-
 if (currentUser) {
-    initialState = {
-        users: {
-        [currentUser.id]: currentUser
-        }
-    };
+  initialState = {
+    user: currentUser
+  };
 };
 
-const initializeApp = () => {
+const store = configureStore(initialState);
+
+window.createUser = createUser
+window.loginUser = loginUser
+window.logoutUser = logoutUser
+
+const InitializeApp = () => {
   ReactDOM.render(
       <React.StrictMode>
       <Provider store={store}>
@@ -29,8 +38,16 @@ const initializeApp = () => {
   );
 }
 
-window.createUser = createUser
-window.loginUser = loginUser
-window.logoutUser = logoutUser
+ReactDOM.render(
+  <React.StrictMode>
+    <InitializeApp />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
 
-restoreSession().then(initializeApp)
+restoreSession().then(InitializeApp)
+
+
+
+
+
