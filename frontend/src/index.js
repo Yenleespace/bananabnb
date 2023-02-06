@@ -6,6 +6,7 @@ import configureStore from './store';
 import { restoreSession } from './store/csrf';
 import { createUser, loginUser, logoutUser } from './store/usersReducer.js';
 import { Provider } from 'react-redux';
+import { ChakraProvider, extendBaseTheme } from '@chakra-ui/react'
 
 
 let currentUser;
@@ -40,7 +41,9 @@ const InitializeApp = () => {
 
 ReactDOM.render(
   <React.StrictMode>
-    <InitializeApp />
+    <ChakraProvider>
+        <InitializeApp />
+    </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

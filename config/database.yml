@@ -81,6 +81,4 @@ test:
 #
 production:
   <<: *default
-  database: bananabnb_production
-  username: bananabnb
-  password: <%= ENV["BANANABNB_DATABASE_PASSWORD"] %>
+  url: <%= ENV['DATABASE_URL'] %>

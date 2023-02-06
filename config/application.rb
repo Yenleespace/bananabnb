@@ -40,5 +40,7 @@ module Bananabnb
     key: '_appname_session',
     same_site: :lax, 
     secure: Rails.env.production?
+    config.railsties_order = [:all, :main_app]
+    config.api_only = true
   end
 end

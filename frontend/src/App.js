@@ -1,8 +1,13 @@
 import React from 'react';
+import LoginForm from './components/LoginFormModal/LoginForm';
+
 
 function App() {
   return (
-    <h1>Hello world!</h1>
+    <>
+      <LoginForm />
+    </>
+
   );
 }
 
