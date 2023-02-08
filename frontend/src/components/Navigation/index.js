@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import logo from './airbnb_logo.jpeg'
 import "./Navigation.css"
+import NavButton from './NavButton';
 
 function Navigation() {
 
@@ -15,6 +16,7 @@ function Navigation() {
             <h1>BananaBnB</h1>
           </div>
         </NavLink>
+        <NavButton/>
       </header>
     )
 }

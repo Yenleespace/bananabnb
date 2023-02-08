@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { ModalProvider } from './context/Modal'
+
 import App from './App';
 import configureStore from './store';
+import csrfFetch from './store/csrf';
+
+import './index.css';
 import { restoreSession } from './store/csrf';
 import { createUser, loginUser, logoutUser } from './store/usersReducer.js';
-import { Provider } from 'react-redux';
 import { ChakraProvider, extendBaseTheme } from '@chakra-ui/react'
-import { BrowserRouter } from 'react-router-dom';
 
 let currentUser;
 

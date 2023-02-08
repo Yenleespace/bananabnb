@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@chakra-ui/button": "^2.0.16",
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -12,7 +13,6 @@
   "directories": {
     "lib": "lib"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npm install --prefix frontend && npm run build --prefix frontend"

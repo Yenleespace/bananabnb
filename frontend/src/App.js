@@ -1,23 +1,19 @@
 import React from "react";
-import { useDispatch } from 'react-redux';
-import LoginForm from './components/LoginFormModal/LoginForm';
+import { Route, Switch } from "react-router-dom";
+import Navigation from './components/Navigation';
 import SignUpForm from './components/SignUpFormModal/SignUpForm';
-import { logoutUser } from './store/usersReducer';
-import Navigation  from './components/Navigation';
-
 
 function App() {
-  const loginstatus = sessionStorage.getItem("currentUser")
-  const dispatch=useDispatch();
   return (
-    <>
-    <Navigation />
-    {/* {loginstatus}<br/> */}
-      <button onClick={() => dispatch(logoutUser())} >Log Out</button>
-      <LoginForm />
-      <SignUpForm />
-    </>
-
+    <div className="container py-3">
+      <Navigation />
+      <Route>
+        <h1>Main Page</h1>
+      </Route>
+      <Route>
+        <SignUpForm />
+      </Route>
+    </div>
   );
 }
 
