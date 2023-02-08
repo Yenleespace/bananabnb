@@ -16,14 +16,15 @@ import { csrfFetch } from "./csrf";
     });
 
     // THUNK ACTION CREATORS
-    export const loginUser = user => async dispatch => {
+    export const loginUser = (user, setUser) => async dispatch => {
         let res = await csrfFetch('/api/session', {
             method: 'POST',
             body: JSON.stringify(user)
         });
         let data = await res.json();
         sessionStorage.setItem('currentUser', JSON.stringify(data.user));
-        debugger
+        // debugger
+        setUser({ isShown: true })
         dispatch(receiveUser(data.user))
     };
 
@@ -54,6 +55,7 @@ import { csrfFetch } from "./csrf";
             case RECEIVE_USER:
                 // debugger
                 nextState[action.payload.id] = action.payload;
+                // console.log("success")
                 return nextState;
             case REMOVE_USER:
                 delete nextState[action.userId];

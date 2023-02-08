@@ -7,7 +7,7 @@ import { restoreSession } from './store/csrf';
 import { createUser, loginUser, logoutUser } from './store/usersReducer.js';
 import { Provider } from 'react-redux';
 import { ChakraProvider, extendBaseTheme } from '@chakra-ui/react'
-
+import { BrowserRouter } from 'react-router-dom';
 
 let currentUser;
 
@@ -30,19 +30,21 @@ window.logoutUser = logoutUser
 
 const InitializeApp = () => {
   ReactDOM.render(
-      <React.StrictMode>
+    <React.StrictMode>
       <Provider store={store}>
+        <BrowserRouter>
           <App />
+        </BrowserRouter>
       </Provider>
-      </React.StrictMode>,
-      document.getElementById('root')
+    </React.StrictMode>,
+    document.getElementById('root')
   );
 }
 
 ReactDOM.render(
   <React.StrictMode>
     <ChakraProvider>
-        <InitializeApp />
+      <InitializeApp />
     </ChakraProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -5,10 +5,12 @@
 
 #form-input-group {
     width: 30vh;
+    margin-top: 10px;
 }
 
-/* #form-chakra {
-    display: flex;
-    background-color: red;
-    gap: 20px;
-} */
+Button {
+    margin-top: 10px;
+}
+
+
+
