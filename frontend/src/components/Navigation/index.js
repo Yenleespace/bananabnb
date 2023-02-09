@@ -28,19 +28,18 @@ function Navigation() {
   }
 
     return (
-      <header className=''>
-        <NavLink exact to="/">
+      <header>
+      
+        <NavLink exact to="/" style={{ textDecoration: 'none' }}>
           <div className='logo'>
             <img src={logo} alt="logo" className='banana-img' />
             <h1 className='main-title'>BananaBnB</h1>
           </div>
         </NavLink>
-          <div className="session-links">
-            {sessionLinks}
-          </div>  
-
-
-            
+        <div className="session-links">
+          {sessionLinks}
+      
+        </div>
       </header>
     )
 }

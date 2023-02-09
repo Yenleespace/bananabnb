@@ -3,6 +3,7 @@ import { Modal } from '../../context/Modal'
 
 import LoginForm from './LoginForm'
 import SignupForm from "./SignupForm";
+import './SessionForms.css'
 
 export { SignupForm, LoginForm };
 
@@ -22,7 +23,7 @@ export function SingUpModal({ onClose, onSuccess }) {
   return (
     <Modal onClose={onClose}>
       <div className="session-modal">
-        <h1>Sing Up</h1>
+        <h1>Sign Up</h1>
         <SignupForm onSuccess={onSuccess} />
       </div>
     </Modal>

@@ -38,8 +38,8 @@ const LoginForm = ({ onSuccess }) => {
                 </Button>
               </InputRightElement>
             </InputGroup>
-            <Button bgColor={"grey"} color="rgb(255 255 255)" type="submit">Sign In</Button>
-            <Button bgColor={"grey"} color="rgb(255 255 255)" >Demo Sign In</Button>
+            <Button className="login-btn" bgColor={"grey"} color="rgb(255 255 255)" type="submit">Sign In</Button>
+            <Button className="demo-btn" bgColor={"grey"} color="rgb(255 255 255)" >Demo Sign In</Button>
           </div>
         </form>
       </ChakraProvider>
