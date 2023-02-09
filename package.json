@@ -4,7 +4,9 @@
     "@chakra-ui/react": "^2.4.9",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "framer-motion": "^9.0.1"
+    "bootstrap": "^5.2.3",
+    "framer-motion": "^9.0.1",
+    "sass": "^1.58.0"
   },
   "name": "bananabnb",
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",

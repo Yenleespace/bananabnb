@@ -14,6 +14,11 @@ import { csrfFetch } from "./csrf";
         type: REMOVE_USER,
         userId // userId: userId
     });
+const storeCurrentUser = user => {
+    if (user) sessionStorage.setItem("currentUser", JSON.stringify(user));
+    else sessionStorage.removeItem("currentUser");
+}
+
 
     // THUNK ACTION CREATORS
     export const loginUser = (user, setUser) => async dispatch => {
@@ -22,18 +27,19 @@ import { csrfFetch } from "./csrf";
             body: JSON.stringify(user)
         });
         let data = await res.json();
-        sessionStorage.setItem('currentUser', JSON.stringify(data.user));
-        // debugger
+        storeCurrentUser(data.user);                
         setUser({ isShown: true })
         dispatch(receiveUser(data.user))
+        return res;
     };
 
-    export const logoutUser = userId => async dispatch => {
+    export const logoutUser = (userId) => async dispatch => {
         let res = await csrfFetch('/api/session', {
             method: 'DELETE'
         });
-        sessionStorage.setItem('currentUser', null)
+        sessionStorage.setItem('currentUser', null)                
         dispatch(removeUser(userId));
+        return res;
     }
 
     export const createUser = user => async dispatch => {
@@ -41,22 +47,21 @@ import { csrfFetch } from "./csrf";
             method: 'POST',
             body: JSON.stringify(user)
         });
-        let data = await res.json();
+        let data = await res.json();        
         sessionStorage.setItem('currentUser', JSON.stringify(data.user));
         dispatch(receiveUser(data.user));
     }
 
-
+    const initialState = {
+        user: JSON.parse(sessionStorage.getItem("currentUser"))
+    };
     // REDUCER
-    const userReducer = ( state = {}, action ) => {
+const userReducer = (state = initialState, action ) => {
         const nextState = { ...state };
 
         switch(action.type) {
-            case RECEIVE_USER:
-                // debugger
-                nextState[action.payload.id] = action.payload;
-                // console.log("success")
-                return nextState;
+            case RECEIVE_USER:   
+                return { ...state, user: action.payload };
             case REMOVE_USER:
                 delete nextState[action.userId];
                 return nextState;

@@ -2,61 +2,49 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
-import { ModalProvider } from './context/Modal'
+import { ModalProvider } from './context/Modal';
 
 import App from './App';
 import configureStore from './store';
-import csrfFetch from './store/csrf';
-
+import csrfFetch from "./store/csrf";
+import * as sessionActions from './store/session';
 import './index.css';
-import { restoreSession } from './store/csrf';
-import { createUser, loginUser, logoutUser } from './store/usersReducer.js';
-import { ChakraProvider, extendBaseTheme } from '@chakra-ui/react'
+import './custom.scss';
 
-let currentUser;
+const store = configureStore();
 
-if (sessionStorage.getItem('currentUser') !== "undefined") {
-  currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+if (process.env.NODE_ENV !== "production") {
+  window.store = store;
+  window.csrfFetch = csrfFetch;
+  window.sessionActions = sessionActions;  
 }
 
-let initialState = {};
-if (currentUser) {
-  initialState = {
-    user: currentUser
-  };
-};
-
-const store = configureStore(initialState);
-
-window.createUser = createUser
-window.loginUser = loginUser
-window.logoutUser = logoutUser
-
-const InitializeApp = () => {
-  ReactDOM.render(
-    <React.StrictMode>
+function Root() {
+  return (
+    <ModalProvider>
       <Provider store={store}>
         <BrowserRouter>
           <App />
         </BrowserRouter>
       </Provider>
+    </ModalProvider>
+  );
+}
+
+const renderApplication = () => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Root />
     </React.StrictMode>,
     document.getElementById('root')
   );
 }
 
-ReactDOM.render(
-  <React.StrictMode>
-    <ChakraProvider>
-      <InitializeApp />
-    </ChakraProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-restoreSession().then(InitializeApp)
-
-
-
-
-
+if (
+  sessionStorage.getItem("currentUser") === null ||
+  sessionStorage.getItem("X-CSRF-Token") === null
+) {
+  store.dispatch(sessionActions.restoreSession()).then(renderApplication);
+} else {
+  renderApplication();
+}
