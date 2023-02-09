@@ -1,22 +1,45 @@
 import React from 'react';
-import { NavLink, Router } from 'react-router-dom';
-import { Route } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import logo from './airbnb_logo.jpeg'
+import LoginButton from './LoginButton';
+import SignupButton from './SignupButton';
+import ProfileButton from './ProfileButton';
+import logo from './banana.png' //***************** */
 import "./Navigation.css"
-import NavButton from './NavButton';
+
 
 function Navigation() {
+  
+  const sessionUser = useSelector(state => state.session.user);
+  
+  let sessionLinks;
+  
+  if (sessionUser){
+    sessionLinks = (
+      <ProfileButton user={sessionUser} />
+    )
+  } else{    
+    sessionLinks= (
+    <>
+    <LoginButton />      
+    <SignupButton/>
+
+    </>)
+  }
 
     return (
-      <header className='nav-header'>
-        <NavLink exact to="/">
+      <header>
+      
+        <NavLink exact to="/" style={{ textDecoration: 'none' }}>
           <div className='logo'>
-            <img src={logo} alt="logo" />
-            <h1>BananaBnB</h1>
+            <img src={logo} alt="logo" className='banana-img' />
+            <h1 className='main-title'>BananaBnB</h1>
           </div>
         </NavLink>
-        <NavButton/>
+        <div className="session-links">
+          {sessionLinks}
+      
+        </div>
       </header>
     )
 }

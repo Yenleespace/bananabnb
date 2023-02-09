@@ -1,0 +1,24 @@
+#form-control {
+    margin: 10px;
+
+}
+
+#form-input-group {
+    margin-top: 10px;
+}
+
+Button {
+    margin-top: 20px;
+    height: 50px;
+    width: 100%;
+}
+
+.login-btn {
+    /* width: 100%; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.demo-btn {
+    /* width: 100%; */
+}
