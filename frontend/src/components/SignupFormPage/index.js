@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { SignupForm, SingUpModal } from "../SessionForms";
+import { SignupForm } from "../LoginForms";
 
 
 function SignupFormPage() {

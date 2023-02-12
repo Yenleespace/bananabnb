@@ -3,8 +3,21 @@
 
 }
 
-#form-input-group {
+.input-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    /* TODO: Chan50ge it to 100 */
+}
+
+.form-input-group {
     margin-top: 10px;
+}
+
+.sign_up_and_sign_in {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 Button {
@@ -22,3 +35,4 @@ Button {
 .demo-btn {
     /* width: 100%; */
 }
+

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {LoginModal} from '../SessionForms';
+import {LoginModal} from '../LoginForms';
 
 
 function LoginButton() {
@@ -7,9 +7,9 @@ function LoginButton() {
 
     return (
         <>
-            <button onClick={() => setShowModal(true)} className="button">
+            <p onClick={() => setShowModal(true)} >
                 Log In
-            </button>
+            </p>
             {showModal && <LoginModal onClose={() => setShowModal(false)} />}
         </>
     );

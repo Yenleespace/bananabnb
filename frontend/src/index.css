@@ -1,7 +1,17 @@
 /* TODO Add site wide styles */
 /* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap');
+
+
 * {
     font-family: Figtree;
     /* font-weight: 700; */
 }
+
+
+#root{
+    /* background-color: #e5e5e5 */
+}
+
+
+

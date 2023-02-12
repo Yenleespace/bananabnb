@@ -11,6 +11,9 @@ import * as sessionActions from './store/session';
 import './index.css';
 import './custom.scss';
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 const store = configureStore();
 
 if (process.env.NODE_ENV !== "production") {

@@ -3,6 +3,7 @@ import * as sessionActions from "../../store/session";
 import { useInput, useSubmit } from "../../hooks";
 import { FormErrors, Inputs } from "../Forms";
 import { Input, Button, FormControl, FormLabel, FormHelperText, ChakraProvider, InputGroup, InputRightElement } from '@chakra-ui/react'
+import './SessionForms.css'
 
 function SignupForm({ onSuccess }) {
   const [email, setEmail] = useInput("");
@@ -25,46 +26,50 @@ function SignupForm({ onSuccess }) {
     <ChakraProvider>
       <form id="form-control" onSubmit={onSubmit}>
         <FormErrors errors={errors} />
-        
+        <FormLabel className='login-form'>Welcome to Bananabnb</FormLabel>
+
         <div className='input-box'>
-          <Input
-            focusBorderColor='yellow.400'
-            type='email'
-            value={email}
-            onChange={setEmail}
-            placeholder="Email" />
 
-          <Input
-            focusBorderColor='yellow.400'
-            type='last_name'
-            value={last_name}
-            onChange={setLastName}
-            placeholder="Last Name" />
+          <InputGroup className="sign_up_and_sign_in">
+            <Input
+              focusBorderColor='yellow.400'
+              type='email'
+              value={email}
+              onChange={setEmail}
+              placeholder="Email" />
+            <Input
+              focusBorderColor='yellow.400'
+              type='last_name'
+              value={last_name}
+              onChange={setLastName}
+              placeholder="Last Name" />
 
-          <Input
-            focusBorderColor='yellow.400'
-            type='first_name'
-            value={first_name}
-            onChange={setFirstName}
-            placeholder="FirstName" />
-          
-          <Input
-            focusBorderColor='yellow.400'
-            type='password'
-            value={password}
-            onChange={setPassword}
-            placeholder="Password" />
+            <Input
+              focusBorderColor='yellow.400'
+              type='first_name'
+              value={first_name}
+              onChange={setFirstName}
+              placeholder="FirstName" />
 
-          <Input
-            focusBorderColor='yellow.400'
-            type='Confirm password'
-            value={confirmPassword}
-            onChange={onConfirmPasswordChange}
-            placeholder=" Confirm Password" />
+            <Input
+              focusBorderColor='yellow.400'
+              type='password'
+              value={password}
+              onChange={setPassword}
+              placeholder="Password" />
 
-          <Button bgColor={"grey"} color="rgb(255 255 255)" type="submit">Sign Up</Button>
-          
+            <Input
+              focusBorderColor='yellow.400'
+              type='Confirm password'
+              value={confirmPassword}
+              onChange={onConfirmPasswordChange}
+              placeholder=" Confirm Password" />
+          </InputGroup>
+
+
         </div>
+
+        <Button bgColor={"grey"} color="rgb(255 255 255)" type="submit">Sign Up</Button>
       </form>
     </ChakraProvider>
 

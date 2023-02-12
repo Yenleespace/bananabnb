@@ -12,6 +12,7 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
+    has_many :listings, :foreign_key => 'host_id'
     has_secure_password
     attr_reader :password
 

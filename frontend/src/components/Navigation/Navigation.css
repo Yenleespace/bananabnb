@@ -1,22 +1,53 @@
+.container-flex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.brand{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
 .logo {
     height: 50px;
     width: 50px;
-    object-fit: cover;
+}
+
+.main-title{
     display: flex;
-    /* align-items: center; */
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 20px;
+    color: #f1c232;
+    height: 50px;
 }
 
-.banana-img {
-    width: 50px;
-    margin-right: 15px;
+/* Search bar */
+.d-flex {
+    width: 40%;
 }
 
-.session-links {
-    display:flex;
-    justify-content:right;
+.d-flex input {
+    border: 2px solid #e3dede60;
+    box-shadow: 0px 2px 3px #e3dede60;
+    border-radius: 8px;
 }
 
-header{
-    display: flex;
-    justify-content:space-between;
+.d-flex input:hover {
+    box-shadow: 0px 4px 6px #ffe135;
+}
+
+/* Drop Down menu */
+.dropdown
+
+.dropdown-login-signup {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0px 10px;
+}
+
+.navbar-main {
+    /* background-color: #e5e5e5;  */
 }

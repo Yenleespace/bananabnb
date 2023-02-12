@@ -19,7 +19,7 @@ export function LoginModal({ onClose, onSuccess }) {
   )
 }
 
-export function SingUpModal({ onClose, onSuccess }) {
+export function SignUpModal({ onClose, onSuccess }) {
   return (
     <Modal onClose={onClose}>
       <div className="session-modal">
