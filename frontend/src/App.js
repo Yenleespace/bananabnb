@@ -24,9 +24,9 @@ function App() {
         <ListingForm />        
       </Route>
 
-      {/* <Route path="/listings/:listingId">
+      <Route path="/listings/:listingId">
         <ListingShowPage />
-      </Route> */}
+      </Route>
 
 
     </div>

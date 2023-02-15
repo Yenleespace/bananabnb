@@ -1,4 +1,6 @@
 import csrfFetch from "./csrf.js";
+import { addReviews } from "./reviews.js";
+import { addUsers } from "./users.js";
 
 
 // Listing index start
@@ -15,7 +17,7 @@ const setListings = listings => ({
 export const fetchListings = () => async dispatch => {
     // const filterParams = new URLSearchParams(filters);
     const response = await csrfFetch(`/api/listings`);            
-    const data = await response.json();        
+    const data = await response.json();          
     dispatch(setListings(data.listings));    
     return response;
 };
@@ -36,7 +38,8 @@ export const addListing = listing => ({
 
 
 export const createListing = listingFormData => async dispatch => {    
-    const response = await csrfFetch("/api/listings", {
+    
+    const response = await csrfFetch("/api/listings", {        
         method: "POST",
         body: listingFormData
     });
@@ -52,12 +55,16 @@ export const createListing = listingFormData => async dispatch => {
 // 
 
 
-// export const fetchListing = (listingId) => async dispatch => {
-//     const res = await csrfFetch(`/api/listings/${listingId}`)
+// show
+export const fetchListing = listingId => async dispatch => {
+    const response = await csrfFetch(`/api/listings/${listingId}`);    
+    const data = await response.json();           
+    dispatch(addListing(data.listing));
+    dispatch(addReviews(data.reviews));
+    return response;
+}
 
-//     let data = await res.json()
-//     dispatch(receiveListingDetails(data))
-// }
+// show end
 
 
 

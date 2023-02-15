@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useInput, useSubmit } from '../../hooks';
-import {createListing} from '../../store/listings'
+import { createListing } from '../../store/listings'
 import { FormErrors, Input, TextArea } from '../Forms';
 import { SessionModal } from '../LoginForms';
-
+import ListingFormPage from './ListingFormPage.css'
 
 function ListingForm() {
     const sessionUser = useSelector(state => state.session.user);
@@ -19,10 +19,8 @@ function ListingForm() {
     const [city, onCityChange] = useInput('');
     const [state, onStateChange] = useInput('');
     const [zipCode, onZipCodeChange] = useInput('');
-    const [photoFile, setPhotoFile] = useState(null);
-    const [photoUrl, setPhotoUrl] = useState(null);
- 
-    
+    const [photoFile, setPhotoFile] = useState([]);
+    const [photoUrl, setPhotoUrl] = useState([]);
 
     const [errors, onSubmit] = useSubmit({
         createAction: () => {
@@ -33,12 +31,11 @@ function ListingForm() {
             formData.append('address', address);
             formData.append('city', city);
             formData.append('state', state);
-            formData.append('zip_code', zipCode);
+            formData.append('zip_code', zipCode);            
+            if (photoFile) {
+                formData.append('photos[]', photoFile);
+            }
             
-
-            // if (photoFile) {
-            //     formData.append('photo', photoFile);
-            // }
             return createListing(formData);
         },
         onSuccess: () => history.push('/listings')
@@ -49,12 +46,20 @@ function ListingForm() {
         if (file) {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
-            fileReader.onload = () => {
-                setPhotoFile(file);
-                setPhotoUrl(fileReader.result);
+            fileReader.onload = () => {                
+                setPhotoFile((prev) => ([...prev, file]));
+                setPhotoUrl((prev) => ([...prev, fileReader.result]));
             };
         }
     }
+    const attachedphotos =
+        (
+            <div className="image-preview">
+                <h2>Image preview{photoUrl}</h2>
+                <img width="200px" src={photoUrl} alt="Preview" />
+            </div>
+        )
+
 
     return (
         <>
@@ -117,24 +122,30 @@ function ListingForm() {
                         required
                     />
 
-
-
-                    {/* <Input
-                        label="Add a Picture"
-                        type="file"
-                        onChange={handleFileChange}
-                    />
-
-                    {photoUrl && (
-                        <div className="image-preview">
+                    {photoUrl.length < 6 && (
+                        <>
+                            <Input
+                                label="Add a Picture"
+                                type="file"
+                                multiple
+                                onChange={handleFileChange}
+                            />
                             <h2>Image preview</h2>
-                            <img height="200px" src={photoUrl} alt="Preview" />
-                        </div>
-                    )} */}
+                            <div className="image-preview">
+                                {photoUrl.map(purl => {
+                                    return (
+                                        <img width="200px" src={purl} alt="Preview" />)
+                                })}
+                            </div>
+                        </>
+                    )}
+                    {photoUrl.length > 5 && (
+                        <h1>Maximum photo is 5</h1>
+                    )}
 
                     <div>
                         <Link className="button" to="/">Cancel</Link>
-                        <button className="button">Create Bench</button>
+                        <button className="button">Create Banana</button>
                     </div>
                 </form>
             </div>

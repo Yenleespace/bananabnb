@@ -1,0 +1,42 @@
+.listing-list{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20%, auto));
+    gap: 20px;
+}
+.listing-card{
+    padding:10px;
+}
+
+.listing-card img{
+    border-radius: 0.5rem;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.listing-card p {    
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.index-loc-rate {
+    display: flex;
+    justify-content: space-between;
+}
+
+.index-pic {
+    object-fit: cover;
+    border-radius: 10px;
+    aspect-ratio: 1/1;
+}
+
+.index-location {
+    color: black;
+    margin: 0;
+    font-weight: bold;
+    outline: 0;
+}
+
+.index-title {
+    font-size: 15px;
+    color: #d6b80f;
+}

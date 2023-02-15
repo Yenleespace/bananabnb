@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { fetchListings } from "../../store/listings";
 import ListingList from './ListingList'
 import ListingFilter from "../ListingFilter/ListingFilter";
+import './ListingIndex.css'
 
 function ListingIndexPage() {
   const history = useHistory();
@@ -14,12 +15,12 @@ function ListingIndexPage() {
     dispatch(fetchListings())    
   }, [dispatch]);
 
-  return (
-
-    <div className="listing-list-container">
-      <ListingFilter/>
+  return (        
+    <div className="listing-list-container">      
+      <ListingFilter />
       <ListingList listings={listings} />
     </div>
+    
   );
 }
 

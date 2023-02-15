@@ -1,23 +1,29 @@
 class Api::ListingsController < ApplicationController
   before_action :set_listing, only: %i[ show update destroy ]
-  wrap_parameters include: Listing.attribute_names + [:photo], format: :multipart_form
+  wrap_parameters include: Listing.attribute_names, format: :multipart_form
 
-  # GET /listings
-  # GET /listings.json
   def index
-    @listings = Listing.all    
+    @listings = Listing.all        
   end
 
-  # GET /listings/1
-  # GET /listings/1.json
-  def show
+  def show    
+    if @listing 
+            @host = User.find_by(id: @listing.host_id)
+            
+            render :show
+    else
+            render json: {errors: 'Lisitng not found'}, status: 422
+    end
   end
 
-  # POST /listings
-  # POST /listings.json
+
   def create    
-    @listing = current_user.listings.new(listing_params)
-    
+    @listing = current_user.listings.new(listing_params)    
+    if params[:phtos]
+      params[:photos].each do |photo|
+        @listing.photos.attach(photo)
+      end
+    end
 
     if @listing.save
       render :show
@@ -26,8 +32,7 @@ class Api::ListingsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /listings/1
-  # PATCH/PUT /listings/1.json
+
   def update
     if @listing.update(listing_params)
       render :show, status: :ok, location: @listing
@@ -36,20 +41,18 @@ class Api::ListingsController < ApplicationController
     end
   end
 
-  # DELETE /listings/1
-  # DELETE /listings/1.json
+
   def destroy
     @listing.destroy
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+
     def set_listing
       @listing = Listing.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def listing_params
-      params.require(:listing).permit(:title, :description, :address, :state, :city, :zip_code, :price)
+      params.require(:listing).permit(:title, :description, :address, :state, :city, :zip_code, :price, photos:[])
     end
 end
