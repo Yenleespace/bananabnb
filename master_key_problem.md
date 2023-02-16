@@ -3,3 +3,7 @@ config/credentials.yml.enc
 Delete those files and then you can generate them with this:
 
 rails credentials:edit
+add : aws info change
+rails db:reset
+
+npm install --legacy-peer-deps react-dates

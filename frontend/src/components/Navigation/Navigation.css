@@ -1,3 +1,5 @@
+
+
 .container-flex{
     display: flex;
     justify-content: space-between;
@@ -49,5 +51,5 @@
 }
 
 .navbar-main {
-    /* background-color: #e5e5e5;  */
+    /* background-color: #fff !important; */
 }

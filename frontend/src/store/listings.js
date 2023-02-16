@@ -1,7 +1,7 @@
 import csrfFetch from "./csrf.js";
 import { addReviews } from "./reviews.js";
 import { addUsers } from "./users.js";
-
+import { addReservations } from "./reservations.js"
 
 // Listing index start
 // 
@@ -60,7 +60,8 @@ export const fetchListing = listingId => async dispatch => {
     const response = await csrfFetch(`/api/listings/${listingId}`);    
     const data = await response.json();           
     dispatch(addListing(data.listing));
-    dispatch(addReviews(data.reviews));
+    dispatch(addReviews(data.reviews));    
+    dispatch(addReservations(data.reservations));    
     return response;
 }
 

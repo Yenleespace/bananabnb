@@ -20,13 +20,10 @@
     gap: 10px;
     overflow: hidden;
     margin-bottom: 30px;  
-    padding: 2px;
+    padding: 0px;
     height: 65vh;
     width: 80vw;
     border-radius: 30px;
-    /* aspect-ratio: 1/1; */
-    /* grid-auto-rows: 200px; */
-
 }
 
 .item:nth-child(1) {
@@ -39,7 +36,6 @@
 .show-card-photos img{
     width: 100%;
     height: 100%;
-    /* border-radius: 10px; */
 }
 
 .head-title {
@@ -53,12 +49,66 @@
     font-weight: bold;
 }
 
+.set-margin {
+    margin-right: 65px;
+    margin-left: 65px;
+}
+
+.listing-container {
+    margin-top: 10px;
+}
+
 .listing-info {
     border-bottom: 1px solid #cccbc4;
     padding-top: 0;
-    margin-left: 65px;
-
-    /* display: flex; */
+    padding-bottom: 20px;
 }
 
+.listing-description {
+    border-bottom: 1px solid #cccbc4;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
 
+.map-container {
+    padding-top: 30px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #cccbc4;
+
+}
+
+.map {
+    width: 100%;
+    height: 478px;
+}
+
+.review-container {
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+.review-button {
+    width: 200px;
+    height: 50px;
+    background-color: #fff;
+    /* border-color: #ffe135; */
+    border-radius: 10px;
+    background-color: transparent;
+    outline: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.back-link {
+    color: black;
+}
+
+.button-container {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.listing-divider {
+    display: flex;
+
+}

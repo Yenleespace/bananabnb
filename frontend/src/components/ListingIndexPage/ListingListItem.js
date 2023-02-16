@@ -11,7 +11,7 @@ const ListingListItem = ({ listing }) => {
         <div className="listing-card"        
             onClick={() => history.push(`/listings/${listing.id}`)}>
             {/* <img alt="1" src={listing.imageUrls[0]} />  */}
-            <img className='index-pic' alt="1" src={mainpic} />
+            <img className='index-pic' alt="1" src={listing.imageUrls[0]} />
             <div className='index-loc-rate'>
             <p className='index-location'>{listing.city}</p>
             <p>★{listing.rating}</p>            

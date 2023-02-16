@@ -44,6 +44,14 @@ ApplicationRecord.transaction do
     updated_at: DateTime.now,
   )
 
+  l1.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/5.webp"), filename: "5.webp" },
+  ])
+
   l2 = Listing.create(
     title: "Luxurious 2BR in the Upper East Side",
     description: "Experience the epitome of luxury and comfort in this spacious 2BR apartment located in the prestigious Upper East Side neighborhood of NYC. With high-end furnishings and top-of-the-line amenities, this is the perfect place to call home during your stay in the city!",
@@ -56,6 +64,14 @@ ApplicationRecord.transaction do
     created_at: DateTime.now,
     updated_at: DateTime.now,
   )
+
+  l2.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l2/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l2/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l2/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l2/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l2/5.webp"), filename: "5.webp" },
+  ])
 
   l3 = Listing.create(
     title: "Charming 1BR in Greenwich Village",
@@ -70,6 +86,14 @@ ApplicationRecord.transaction do
     updated_at: DateTime.now,
   )
 
+  l3.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l3/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l3/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l3/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l3/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l3/5.webp"), filename: "5.webp" },
+  ])
+
   l4 = Listing.create(
     title: "Stylish Loft in Soho",
     description: "Come stay in this stylish and modern loft located in the heart of Soho. With its high ceilings and open-plan living space, this is the perfect place to call home during your stay in NYC. Enjoy easy access to all the best shops, restaurants, and cafes in the city!",
@@ -82,6 +106,14 @@ ApplicationRecord.transaction do
     created_at: DateTime.now,
     updated_at: DateTime.now,
   )
+
+  l4.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l4/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l4/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l4/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l4/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l4/5.webp"), filename: "5.webp" },
+  ])
 
   l5 = Listing.create(
     title: "Charming Brownstone in Brooklyn",
@@ -96,6 +128,14 @@ ApplicationRecord.transaction do
     updated_at: DateTime.now
   )
 
+  l5.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l5/5.webp"), filename: "5.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l5/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l5/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l5/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l5/1.webp"), filename: "1.webp" },
+  ])
+
   l6 = Listing.create(
     title: "Modern Apartment in Manhattan",
     description: "Enjoy a luxurious stay in this modern and stylish apartment located in the heart of Manhattan. With its breathtaking views and top-notch amenities, you'll never want to leave!",
@@ -108,6 +148,14 @@ ApplicationRecord.transaction do
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
+
+  l6.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l6/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l6/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l6/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l6/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l6/5.webp"), filename: "5.webp" },
+  ])
   
   l7 = Listing.create(
     title: "Cozy Cabin in the Woods",
@@ -122,6 +170,14 @@ ApplicationRecord.transaction do
     updated_at: DateTime.now
   )
   
+  l7.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l7/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l7/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l7/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l7/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l7/5.webp"), filename: "5.webp" },
+  ])
+
   l8 = Listing.create(
     title: "Beachfront Villa in Malibu",
     description: "Experience the ultimate beach vacation in this stunning and luxurious villa located right on the beach in Malibu. With its breathtaking ocean views and top-of-the-line amenities, this is the perfect place to escape and unwind.",
@@ -134,12 +190,15 @@ ApplicationRecord.transaction do
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
-  
 
-  l1.photos.attach([
-    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/1.webp"), filename: "1.webp" },
-    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/2.webp"), filename: "2.webp" },
+  l8.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l8/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l8/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l8/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l8/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l8/5.webp"), filename: "5.webp" },
   ])
+
 
   puts "Done. Meaning, it's seeded if you SEE THIS TEXT!"
 end

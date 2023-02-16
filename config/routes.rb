@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
   
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -11,8 +12,10 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :show, :destroy]
     resources :listings do
       resources :reviews, only:[:index]
+      resources :reservations, only:[:index]
     end
     resources :reviews, only: [:create, :destroy, :update, :show]
+    resources :reservations, only: [:create, :destroy, :update, :show]
 
 end
 # get '*path', to: "static_pages#frontend_index"

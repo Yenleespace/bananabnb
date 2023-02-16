@@ -14,6 +14,16 @@ json.reviews do
   end
 end
 
+listing_reservations = @listing.reservations
+json.reservations do 
+  listing_reservations.each do |reservation|
+    json.set! reservation.id do
+      json.partial! 'api/reservations/reservation', reservation: reservation
+    end
+  end
+end
+
+
 
 #   listing_reviews.each do |review|
 #     json.set! review.id do

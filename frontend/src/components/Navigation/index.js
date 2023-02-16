@@ -38,7 +38,7 @@ function Navigation() {
 
   return (
     <header className='navbar-main'>
-      <nav className="navbar navbar-expand-lg bg-light">
+      <nav className="navbar navbar-expand-lg">
         <div className="container-fluid container-flex">
           <NavLink exact to="/" style={{ textDecoration: 'none', color: "black" }} className="navbar-brand">
             <div className='brand'>

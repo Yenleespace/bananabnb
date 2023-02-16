@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom'
 import { fetchListing } from '../../store/listings'
 import { Link } from 'react-router-dom'
 import { getListingReviews } from '../../store/reviews'
+import { getListingReservations } from '../../store/reservations'
 import ReviewForm from '../Reviews/ReviewForm'
+import { ReservationForm } from '../Reservation/ReservationForm'
 import './ListingShow.css'
 
 import one from "../../assets/1.jpg"
@@ -19,6 +21,8 @@ const ListingShowPage = () => {
   const listing = useSelector(state => state.listings[listingId])
   const sessionUser = useSelector(state => state.session.user);
   const reviews = useSelector(getListingReviews(parseInt(listingId)));
+  // const reservations = useSelector(getListingReservations(parseInt(listingId)));
+
 
   useEffect(() => {
     dispatch(fetchListing(listingId))
@@ -27,9 +31,6 @@ const ListingShowPage = () => {
   if (!listing) {
     return null;
   }
-
-
-  debugger
   return (
     <div className="show-card">
       <div>
@@ -41,45 +42,69 @@ const ListingShowPage = () => {
           <div className="show-card-photos">
             <img src={listing.imageUrls[0]} alt="foo" className="item" />
             <img src={listing.imageUrls[1]} alt="foo" className="item" />
-            <img src={one} className="item" />
+            <img src={listing.imageUrls[2]} alt="foo" className="item" />
+            <img src={listing.imageUrls[3]} alt="foo" className="item" />
+            <img src={listing.imageUrls[4]} alt="foo" className="item" />
+            {/* <img src={one} className="item" />
             <img src={two} className="item" />
             <img src={three} className="item" />
-            {/* <img src={four} className="item" />
-        <img src={five} className="item" /> */}
+            <img src={four} className="item" />
+            <img src={five} className="item" /> */}
           </div>
         </div>
       </div>
 
 
+      <div className='set-margin'>
 
-      <div className='listing-container'>
-        <div className="listing-info">
-          <h3>Home hosted by {listing.hostName}</h3>
-          <h5 >3 guests 3 bedrooms 3 bed 1 bath</h5>
+        <div className='listing-divider'>
+          <div>
+            <div className='listing-container'>
+              <div className="listing-info">
+                <h3>Home hosted by {listing.hostName}</h3>
+                {/* Temporary */}
+                <h5>3 guests 3 bedrooms 3 bed 1 bath</h5>
+              </div>
+
+              <div className="listing-description">
+                <p>{listing.description}</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <ReservationForm />
+          </div>
+        </div>
+
+
+        <div className='map-container'>
+          <h3>Where you'll be</h3>
+          <p>{listing.city}, {listing.state}</p>
+          <iframe
+            className='map'
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy='no-referrer-when-downgrade'
+            src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAbHcAc_XtGY9mK292vxweVUq7vo1G8oX8&q=${listing.address} + ${listing.city} + ${listing.state}`}>
+          </iframe>
+        </div>
+
+        <div className='review-container'>
+          <h5>★ • 0 Reviews</h5>
+          {reviews.map(review => (
+            <div className="review" key={review.id}>
+              <p> name: {review.user.first_name} {review.user.last_name}</p>
+              <p> {review.review} Rating: {review.rating}</p>
+            </div>))}
+          <div className='button-container'>
+            <LeaveReview listing={listing} />
+          </div>
+          <Link className='back-link' to="/">Back to Listings Index</Link>
         </div>
       </div>
-      <iframe
-        loading="lazy"
-        allowFullScreen
-        referrerPolicy='no-referrer-when-downgrade'
-        src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyAbHcAc_XtGY9mK292vxweVUq7vo1G8oX8&q=${listing.address} + ${listing.city} + ${listing.state}`}>
-      </iframe>
-
-
-
-      <h5>Reviews</h5>
-      {reviews.map(review => (
-        <div className="review" key={review.id}>
-
-          <p> name: {review.user.first_name} {review.user.last_name}</p>
-          <p> {review.review} Rating: {review.rating}</p>
-        </div>))}
-      <LeaveReview listing={listing} />
-      <Link to="/">Back to Listings Index</Link>
     </div>
   )
 }
-
 
 function LeaveReview({ listing }) {
   const [showReviewForm, setShowReviewForm] = useState(false);
@@ -90,7 +115,7 @@ function LeaveReview({ listing }) {
       closeForm={() => setShowReviewForm(false)}
     />
   ) : (
-    <button className="button" onClick={() => setShowReviewForm(true)}>
+    <button className="review-button" onClick={() => setShowReviewForm(true)}>
       Leave a Review
     </button>
   );
