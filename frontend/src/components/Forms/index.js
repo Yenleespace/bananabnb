@@ -2,19 +2,19 @@ import React from "react";
 
 export function Input({ label, type = "text", ...inputProps }) {
   return (
-    <label className="input">
-      {label}
-      <input type={type} {...inputProps} />
-    </label>
+    <>
+      <label className="input" class="form-label">{label}</label>
+      <input class="form-control" type={type} {...inputProps} />
+    </>
   );
 }
 
 export function TextArea({ label, ...textAreaProps }) {
   return (
-    <label className="input">
-      {label}
-      <textarea {...textAreaProps}></textarea>
-    </label>
+    <>
+      <label className="input" class="form-label">{label}</label>
+      <textarea class="form-control"{...textAreaProps}></textarea>
+    </>
   );
 }
 

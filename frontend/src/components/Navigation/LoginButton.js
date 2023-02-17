@@ -7,7 +7,7 @@ function LoginButton() {
 
     return (
         <>
-            <p onClick={() => setShowModal(true)} >
+            <p style={{ cursor: "pointer" }} onClick={() => setShowModal(true)} >
                 Log In
             </p>
             {showModal && <LoginModal onClose={() => setShowModal(false)} />}

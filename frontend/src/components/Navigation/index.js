@@ -25,7 +25,7 @@ function Navigation() {
     sessionLinks = (
       <div className="dropdown-login-signup">
         <p>{sessionUser.email}</p>
-        <p onClick={logout}>Log Out</p>
+        <p style={{ cursor: "pointer" }} onClick={logout} >Log Out</p>
       </div>
     )
   } else {

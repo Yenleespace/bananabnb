@@ -31,11 +31,11 @@ function ListingForm() {
             formData.append('address', address);
             formData.append('city', city);
             formData.append('state', state);
-            formData.append('zip_code', zipCode);            
+            formData.append('zip_code', zipCode);
             if (photoFile) {
                 formData.append('photos[]', photoFile);
             }
-            
+
             return createListing(formData);
         },
         onSuccess: () => history.push('/listings')
@@ -46,7 +46,7 @@ function ListingForm() {
         if (file) {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
-            fileReader.onload = () => {                
+            fileReader.onload = () => {
                 setPhotoFile((prev) => ([...prev, file]));
                 setPhotoUrl((prev) => ([...prev, fileReader.result]));
             };
@@ -65,17 +65,19 @@ function ListingForm() {
         <>
             {!sessionUser && <SessionModal />}
             <div>
-                <h1>Post Home</h1>
+                <h4 class="mb-3" style={{ fontWeight: 'bold'}} >Post Home</h4>
 
                 <form onSubmit={onSubmit} className="form">
                     <FormErrors errors={errors} />
 
-                    <Input
+
+                    <Input 
                         label="Title"
                         value={title}
                         onChange={onTitleChange}
-                        required
-                    />
+                        required />
+
+
 
                     <Input
                         label="Price"
@@ -102,35 +104,46 @@ function ListingForm() {
                         onChange={onAddressChange}
                         required
                     />
+                    <div class="row g 3">
+                        <div class="col-sm-6">
+                            <Input
+                                label="City"
+                                value={city}
+                                onChange={onCityChange}
+                                required
+                            />
+                        </div>
+                        <div class="col-sm-6">
+                            <Input
+                                label="State"
+                                value={state}
+                                onChange={onStateChange}
+                                required
+                            />
+                        </div>
+                    </div>
 
-                    <Input
-                        label="City"
-                        value={city}
-                        onChange={onCityChange}
-                        required
-                    />
-                    <Input
-                        label="State"
-                        value={state}
-                        onChange={onStateChange}
-                        required
-                    />
-                    <Input
-                        label="ZIPCODE"
-                        value={zipCode}
-                        onChange={onZipCodeChange}
-                        required
-                    />
+                    <div class="col-sm-3">
+                        <Input
+                            label="ZIPCODE"
+                            value={zipCode}
+                            onChange={onZipCodeChange}
+                            required
+                        />
+                    </div>
+
 
                     {photoUrl.length < 6 && (
                         <>
-                            <Input
-                                label="Add a Picture"
-                                type="file"
-                                multiple
-                                onChange={handleFileChange}
-                            />
-                            <h2>Image preview</h2>
+                            <div class="col-sm-6">
+                                <Input
+                                    label="Add a Picture"
+                                    type="file"
+                                    multiple
+                                    onChange={handleFileChange}
+                                />
+                            </div>
+                            <h5>Image preview</h5>
                             <div className="image-preview">
                                 {photoUrl.map(purl => {
                                     return (
@@ -143,9 +156,9 @@ function ListingForm() {
                         <h1>Maximum photo is 5</h1>
                     )}
 
-                    <div>
+                    <div>                        
+                        <button style={{ backgroundColor:'#ffe135', borderRadius: '20px', marginBottom:'20px'}} className="banana-button button">Create Banana</button>
                         <Link className="button" to="/">Cancel</Link>
-                        <button className="button">Create Banana</button>
                     </div>
                 </form>
             </div>

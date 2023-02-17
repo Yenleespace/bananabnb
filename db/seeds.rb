@@ -199,6 +199,149 @@ ApplicationRecord.transaction do
     { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l8/5.webp"), filename: "5.webp" },
   ])
 
+  l9 = Listing.create(
+    title: "Luxury Condo in Downtown San Diego",
+    description: "Experience the height of luxury in this sleek and modern condo located in the heart of downtown San Diego. With stunning views of the city and top-of-the-line amenities, this is the perfect place to relax and unwind.",
+    address: "789 5th Avenue",
+    state: "CA",
+    city: "San Diego",
+    zip_code: 92101,
+    price: 600.0,
+    host_id: 1,
+    created_at: DateTime.now,
+    updated_at: DateTime.now
+  )
+
+  l9.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l9/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l9/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l9/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l9/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l9/5.webp"), filename: "5.webp" },
+  ])
+
+  l10 = Listing.create(
+    title: "Spacious Loft in San Francisco",
+    description: "Live like a true San Franciscan in this stylish and spacious loft. With its open floor plan and industrial chic design, you'll be able to fully immerse yourself in the city's vibrant and creative culture.",
+    address: "123 Mission Street",
+    state: "CA",
+    city: "San Francisco",
+    zip_code: 94105,
+    price: 400.0,
+    host_id: 2,
+    created_at: DateTime.now,
+    updated_at: DateTime.now
+  )
+
+  l10.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l10/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l10/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l10/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l10/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l10/5.webp"), filename: "5.webp" },
+  ])
+
+  l11 = Listing.create(
+    title: "Modern Apartment in the City",
+    description: "Experience city living at its finest in this sleek and stylish apartment. With its prime location in the heart of downtown, you'll be just steps away from the best restaurants, bars, and entertainment.",
+    address: "456 Elm Street",
+    state: "IL",
+    city: "Chicago",
+    zip_code: 60611,
+    price: 300.0,
+    host_id: 1,
+    created_at: DateTime.now,
+    updated_at: DateTime.now
+  )
+
+  l11.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l11/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l11/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l11/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l11/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l11/5.webp"), filename: "5.webp" },
+  ])
+
+  l12 = Listing.create(
+    title: "Oceanfront Home in La Jolla",
+    description: "Experience the ultimate beach vacation in this stunning and luxurious home located right on the ocean in La Jolla. With its breathtaking views of the Pacific and its private beach access, you'll have everything you need for the perfect getaway.",
+    address: "123 Ocean Boulevard",
+    state: "CA",
+    city: "San Diego",
+    zip_code: 92037,
+    price: 900.0,
+    host_id: 2,
+    created_at: DateTime.now,
+    updated_at: DateTime.now
+  )
+
+  l12.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l12/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l12/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l12/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l12/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l12/5.webp"), filename: "5.webp" },
+  ])
+
+  l13 = Listing.create(
+    title: "Coastal Cabin in Maine",
+    description: "Experience the charm of New England in this rustic and cozy coastal cabin. With its stunning ocean views and access to the beach, you'll have the perfect opportunity to relax and soak up the beauty of the Maine coastline.",
+    address: "789 Beach Road",
+    state: "ME",
+    city: "Portland",
+    zip_code: 04101,
+    price: 200.0,
+    host_id: 1,
+    created_at: DateTime.now,
+    updated_at: DateTime.now
+  )
+
+  l13.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l13/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l13/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l13/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l13/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l13/5.webp"), filename: "5.webp" },
+  ])
+
+  l14 = Listing.create(
+    title: "Cozy Cottage in Pacific Beach",
+    description: "Escape to the beach in this charming and cozy cottage located in the heart of Pacific Beach. With its laid-back and casual atmosphere, you'll feel right at home in this beach community.",
+    address: "456 Garnet Avenue",
+    state: "CA",
+    city: "San Diego",
+    zip_code: 92109,
+    price: 200.0,
+    host_id: 2,
+    created_at: DateTime.now,
+    updated_at: DateTime.now
+  )
+
+  l14.photos.attach([
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l14/1.webp"), filename: "1.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l14/2.webp"), filename: "2.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l14/3.webp"), filename: "3.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l14/4.webp"), filename: "4.webp" },
+    { io: URI.open("https://bananabnb-seeds.s3.amazonaws.com/l14/5.webp"), filename: "5.webp" },
+  ])
+
+    Review.create(
+      user_id: 1,
+      listing_id: 6,
+      review:"I had a great time staying at this listing. The location was perfect for my needs, and the price was very reasonable. The host was very friendly and helpful, and the listing was clean and comfortable. I would definitely stay here again.",
+      rating: 4.5
+    )
+
+    Review.create(
+      user_id: 2,
+      listing_id: 6,
+      review:"I really enjoyed my stay at this listing. The location was ideal, and the listing was clean and well-maintained. The host was very accommodating and provided excellent service. The only downside was the noise from the street, but overall, it was a great experience.",
+      rating: 4.0
+    )
+
+
+
+
 
   puts "Done. Meaning, it's seeded if you SEE THIS TEXT!"
 end

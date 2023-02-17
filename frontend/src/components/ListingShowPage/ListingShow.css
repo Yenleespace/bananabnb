@@ -12,6 +12,9 @@
     display: flex;
     justify-content: center;
 }
+.set-margin{
+    padding: 10px;
+}
 
 .show-card-photos{    
     display: grid;
@@ -49,14 +52,15 @@
     font-weight: bold;
 }
 
-.set-margin {
-    margin-right: 65px;
-    margin-left: 65px;
-}
 
 .listing-container {
     margin-top: 10px;
+
 }
+
+
+
+
 
 .listing-info {
     border-bottom: 1px solid #cccbc4;
@@ -109,6 +113,13 @@
 }
 
 .listing-divider {
-    display: flex;
+    display: grid;
+    grid-template-columns: 4fr 1.5fr;
+    gap: 50px;
 
+}
+
+.review{
+    display: flex;
+    gap: 20px;
 }

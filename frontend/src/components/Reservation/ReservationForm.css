@@ -1,0 +1,164 @@
+.reservation-box {
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #ebe5e5;
+    box-shadow: #c0aa2d 0px 3px 15px;
+    margin-top: 20px;    
+}
+
+.reservation-info{
+    display: flex;
+    justify-content: space-between ;
+}
+
+.price-night {
+    font-weight: bold;
+    font-size: large;
+}
+
+.reservation-date-box {
+    border: 1px solid grey;
+    border-radius: 20px 20px 0 0;
+    padding: 10px;
+}
+
+.date-picker-title {    
+    font-size: 10px;
+    display: flex;    
+    justify-content: center;
+    gap: 100px;
+}
+
+.date-picker-title h5 {
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.date-range-picker {
+    display: flex;
+    justify-content: center;
+    cursor:pointer;    
+}
+.DateRangePickerInput{
+    display: flex;;
+    justify-content: center;
+    gap: 30px;
+}
+
+.guests-checkbox {        
+    border: 1px solid #727272;
+    border-radius: 0 0 10px 10px;
+    padding: 10px 30px;
+    align-items: center;
+    cursor:pointer;
+}
+
+
+
+.guests-container {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #727272;
+    border-radius: 0 0 10px 10px;
+    padding: 10px 20px 10px 20px;
+    align-items: center;
+    cursor:pointer;
+}
+
+.reserve{
+    height: 50px;
+    color: white;
+    background-image: radial-gradient(circle at center center, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%);
+    border-radius: 10px;
+    text-align: center;
+    width: 300px;
+}
+
+.disabled {
+    background-image: radial-gradient(circle,
+        rgba(184, 184, 184, 1) 0%,
+        rgba(191, 191, 191, 1) 35%,
+        rgba(170, 170, 170, 1) 100%) ;
+    
+}
+
+.no-charge {
+    padding-top: 10px;
+    padding-bottom: 20px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.general-info {
+    display: flex;
+    justify-content: space-between;
+    
+    font-size: 16px;
+}
+
+.underline {
+    text-decoration: underline;
+}
+
+.before-taxes {
+    border-top: 1px solid #EBEBEB;
+    padding-top: 20px;
+    font-weight: 500;
+}
+
+.dropdown-reservation {
+    position: absolute;
+    background-color: white;
+    transform: translateY(-247px);
+    width: 300px;
+    z-index: 1;
+    border: 1px solid #EBEBEB;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+    border-radius:10px;
+    
+}
+
+.age {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 25px 0 25px; ;
+}
+
+.age-button {
+    display: flex;
+    align-items: center;
+    width: 50%;
+    justify-content: space-around;
+    font-size: 15px;
+}
+
+.age-button button {
+    border: 1px solid #727272;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+}
+
+.age-button button:disabled {
+    color:#dddddd;
+    border: 1px solid #dddddd;
+    cursor: default;
+}
+
+.close-button {
+    text-decoration: underline;    
+    float: right;
+}
+.right-align{
+    float: right;    
+}
+
+.pointer{
+    cursor: pointer;
+}
+.reserve{
+    background-color:#ffe135;
+    background-image: none;
+    color: black;
+}

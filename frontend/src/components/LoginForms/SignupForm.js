@@ -60,7 +60,7 @@ function SignupForm({ onSuccess }) {
 
             <Input
               focusBorderColor='yellow.400'
-              type='Confirm password'
+              type='password'
               value={confirmPassword}
               onChange={onConfirmPasswordChange}
               placeholder=" Confirm Password" />

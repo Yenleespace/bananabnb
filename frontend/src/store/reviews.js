@@ -29,7 +29,8 @@ export const getListingReviews = listingId => state => (Object.values(state.revi
 );
 
 export const createReview = (review) => async dispatch => {
-    
+    review['comment'] = review['review']
+    delete review['review']
     const response = await csrfFetch("/api/reviews", {
         method: "POST",
         body: JSON.stringify(review)

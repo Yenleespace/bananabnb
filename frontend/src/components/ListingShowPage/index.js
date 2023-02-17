@@ -23,6 +23,7 @@ const ListingShowPage = () => {
   const reviews = useSelector(getListingReviews(parseInt(listingId)));
   // const reservations = useSelector(getListingReservations(parseInt(listingId)));
 
+  
 
   useEffect(() => {
     dispatch(fetchListing(listingId))
@@ -58,7 +59,8 @@ const ListingShowPage = () => {
       <div className='set-margin'>
 
         <div className='listing-divider'>
-          <div>
+
+          <div className='left-divider'>
             <div className='listing-container'>
               <div className="listing-info">
                 <h3>Home hosted by {listing.hostName}</h3>
@@ -71,7 +73,7 @@ const ListingShowPage = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className='right-divider'>
             <ReservationForm />
           </div>
         </div>
@@ -90,11 +92,13 @@ const ListingShowPage = () => {
         </div>
 
         <div className='review-container'>
-          <h5>★ • 0 Reviews</h5>
+          <h5>★ • {reviews.length} Reviews</h5>
           {reviews.map(review => (
             <div className="review" key={review.id}>
-              <p> name: {review.user.first_name} {review.user.last_name}</p>
-              <p> {review.review} Rating: {review.rating}</p>
+              
+              <p> Comment: {review.review} </p>
+              <p>Rating: {review.rating}</p>
+              <p> Name: {review.user.first_name} {review.user.last_name}</p>
             </div>))}
           <div className='button-container'>
             <LeaveReview listing={listing} />

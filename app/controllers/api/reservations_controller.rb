@@ -15,7 +15,7 @@ class Api::ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
-    debugger
+    # debugger
     @reservation = Reservation.new(reservation_params)
 
     if @reservation.save

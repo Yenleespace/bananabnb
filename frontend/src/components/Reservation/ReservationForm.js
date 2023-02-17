@@ -1,8 +1,8 @@
 import { createReservation } from "../../store/reservations"
-import { useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { useState } from "react"
 import { useParams } from "react-router-dom"
+import { useEffect } from "react"
+import { useState } from "react"
 import 'react-dates/initialize'
 import { DateRangePicker } from 'react-dates'
 import { SuccessfulReservationModal } from "./ReservationModal"
@@ -10,21 +10,14 @@ import moment from 'moment'
 import 'react-dates/lib/css/_datepicker.css'
 import { showModal } from "../../store/ui"
 import { getListingReservations } from "../../store/reservations"
+import './ReservationForm.css'
 
 export const ReservationForm = () => {
     const dispatch = useDispatch()
     const { listingId } = useParams()
     const listing = useSelector(state => state.listings[listingId])    
     const reservations = useSelector(getListingReservations(parseInt(listingId)));
-    
-
-    
-
-
-    
     const user = useSelector(state => state.session.user)        
-
-    
 
     let userId
     if (user) {
@@ -87,22 +80,22 @@ export const ReservationForm = () => {
     
 
     return (
-        <form className="reservation-form" onSubmit={handleSubmit}>            
-            {/* {modal === 'successfulReservation' && (<SuccessfulReservationModal ></SuccessfulReservationModal>)} */}
+        <form className="reservation-box" onSubmit={handleSubmit}>            
             
-            <div className="top-info">
-                <p><span id='price'>${listing.price}</span> night</p>
+            <div className="reservation-info">
+                <p className="price-night">${listing.price} night</p>
+                <p>★ · 0 reviews · </p>
             </div>
-            <div>
-                <div className="date-container" style={errors.includes('Start date timeframe already taken') ? { border: '2px solid red' } : {}}>
-                    <div className="date-picker-title">
-                        <h3>CHECK-IN</h3>
-                        <h3 className="checkout">CHECKOUT</h3>
-                    </div>
-                    <div className="picker">
 
-                        <DateRangePicker
-                            // isBlockedDay={(day) => isBlocked(day)}
+            <div>
+                <div className="reservation-date-box" style={errors.includes('Start date timeframe already taken') ? { border: '2px solid red' } : {}}>
+                    <div className="date-picker-title">
+                        <div>CHECK-IN</div>
+                        <div className="checkout">CHECKOUT</div>
+                    </div>
+                    <div className="date-range-picker">
+
+                        <DateRangePicker                            
                             startDate={startDate}
                             startDateId="start-date"
                             startDatePlaceholderText="CHECK-IN"
@@ -121,12 +114,12 @@ export const ReservationForm = () => {
                         />
                     </div>
                 </div>
-                <div className="guests-container" onClick={openMenu}>
-                    <div>
-                        <p>Guests</p>
-                        <p>{numGuests === 1 ? '1 guest' : `${numGuests} guests`}</p>
+                <div className="guests-checkbox" onClick={openMenu}>
+                    <div >
+                        <div><p style={{ marginBottom: "5px" }}>Guests {!showMenu ? <i className="right-align">&#709;</i> : <i className="right-align">&#708;</i>}</p></div>
+                        <div><p style={{ marginBottom: "0px" }}>{numGuests === 1 ? '1 guest' : `${numGuests} guests`}</p></div>
                     </div>
-                    {!showMenu ? <i className="fa-sharp fa-solid fa-chevron-down"></i> : <i className="fa-solid fa-chevron-up"></i>}
+                    
                 </div>
 
             </div>
@@ -143,33 +136,34 @@ export const ReservationForm = () => {
             
             <div className={"general-info before-taxes"} >
                 <h4>Total before taxes</h4>
-                <h4>${Math.floor((listing.cleaningFee + (startDate & endDate ? listing.price * endDate.diff(startDate, 'days') : listing.price)) * 0.14) + (listing.cleaningFee + (startDate & endDate ? listing.price * endDate.diff(startDate, 'days') : listing.price))}</h4>
+                {/* <h4>${Math.floor((listing.cleaningFee + (startDate & endDate ? listing.price * endDate.diff(startDate, 'days') : listing.price)) * 0.14) + (listing.cleaningFee + (startDate & endDate ? listing.price * endDate.diff(startDate, 'days') : listing.price))}</h4> */}
+                <h4>{startDate & endDate ? <p>${listing.price * endDate.diff(startDate, 'days')}</p> : <p>${listing.price}</p>}</h4>
             </div>
             {showMenu && (
                 <div className="dropdown-reservation" style={{ zIndex: 1 }}>
                     <div className="age">
                         <div >
-                            <h3>Adults</h3>
+                            <h5 style={{ marginBottom: "0px" }}>Adults</h5> 
                             <p>Age 13+</p>
                         </div>
                         <div className="age-button">
                             <button type="button" disabled={adults === 1} onClick={() => setAdults(adults - 1)}>-</button>
-                            <h4>{adults}</h4>
+                            <h5 style={{ marginBottom: "0px" }}>{adults}</h5>
                             <button type="button" disabled={numGuests === listing.maxGuests} onClick={() => setAdults(adults + 1)}>+</button>
                         </div>
                     </div>
                     <div className="age">
                         <div>
-                            <h3>Children</h3>
+                            <h5 style={{ marginBottom: "0px" }}>Children</h5>
                             <p>Ages 2-12</p>
                         </div>
                         <div className="age-button">
                             <button type="button" disabled={children === 0} onClick={() => setChildren(children - 1)}>-</button>
-                            <h4>{children}</h4>
+                            <h5 style={{ marginBottom: "0px" }}>{children}</h5>
                             <button type="button" disabled={numGuests === listing.maxGuests} onClick={() => setChildren(children + 1)}>+</button>
-                        </div>
+                        </div>                        
                     </div>
-                    <button className="age close-button" type="button" onClick={() => setShowMenu(false)}>Close</button>
+                    <p className="age  pointer close-button"onClick={() => setShowMenu(false)}>Close</p>                    
                 </div>
             )}
         </form>
