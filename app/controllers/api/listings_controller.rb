@@ -16,6 +16,14 @@ class Api::ListingsController < ApplicationController
     end
   end
 
+  def filters_index
+    # debugger
+    @listings = Listing.where("filter LIKE ?", "%" + params[:filter] + "%")
+    
+    # debugger
+    render :index
+  end
+
 
   def create    
     @listing = current_user.listings.new(listing_params)    

@@ -40,6 +40,7 @@ ApplicationRecord.transaction do
     zip_code: 10001,
     price: 150.0,
     host_id: 1,
+    filter: "Trending",
     created_at: DateTime.now,
     updated_at: DateTime.now,
   )
@@ -61,6 +62,7 @@ ApplicationRecord.transaction do
     zip_code: 10021,
     price: 250.0,
     host_id: 1,
+    filter: "Amazing Luxe",
     created_at: DateTime.now,
     updated_at: DateTime.now,
   )
@@ -82,6 +84,7 @@ ApplicationRecord.transaction do
     zip_code: 10014,
     price: 200.0,
     host_id: 1,
+    filter: "Trending",
     created_at: DateTime.now,
     updated_at: DateTime.now,
   )
@@ -103,6 +106,7 @@ ApplicationRecord.transaction do
     zip_code: 10013,
     price: 225.0,
     host_id: 2,
+    filter: "Trending Amazing",
     created_at: DateTime.now,
     updated_at: DateTime.now,
   )
@@ -124,6 +128,7 @@ ApplicationRecord.transaction do
     zip_code: 11215,
     price: 175.0,
     host_id: 2,
+    filter: "Luxe",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
@@ -145,6 +150,7 @@ ApplicationRecord.transaction do
     zip_code: 11354,
     price: 250.0,
     host_id: 1,
+    filter: "Amazing",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
@@ -166,6 +172,7 @@ ApplicationRecord.transaction do
     zip_code: 92325,
     price: 150.0,
     host_id: 2,
+    filter: "Amazing",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
@@ -187,6 +194,7 @@ ApplicationRecord.transaction do
     zip_code: 90401,
     price: 500.0,
     host_id: 1,
+    filter: "Beachfront Luxe",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
@@ -208,6 +216,7 @@ ApplicationRecord.transaction do
     zip_code: 92101,
     price: 600.0,
     host_id: 1,
+    filter: "Beachfront Amazing Luxe",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
@@ -229,6 +238,7 @@ ApplicationRecord.transaction do
     zip_code: 94105,
     price: 400.0,
     host_id: 2,
+    filter: "Trending",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
@@ -250,6 +260,7 @@ ApplicationRecord.transaction do
     zip_code: 60611,
     price: 300.0,
     host_id: 1,
+    filter: "Trending",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
@@ -271,6 +282,7 @@ ApplicationRecord.transaction do
     zip_code: 92037,
     price: 900.0,
     host_id: 2,
+    filter: "Beachfront",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
@@ -292,6 +304,7 @@ ApplicationRecord.transaction do
     zip_code: 04101,
     price: 200.0,
     host_id: 1,
+    filter: "Trending",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )
@@ -313,6 +326,7 @@ ApplicationRecord.transaction do
     zip_code: 92109,
     price: 200.0,
     host_id: 2,
+    filter: "Beachfront",
     created_at: DateTime.now,
     updated_at: DateTime.now
   )

@@ -7,6 +7,8 @@ import { addReservations } from "./reservations.js"
 // 
 // 
 const SET_LISTINGS = 'listings/setListings';
+const RECEIVE_LISTINGS = 'listings/receive_listings';
+
 // const ADD_BENCH = 'benches/addBench';
 
 const setListings = listings => ({
@@ -14,13 +16,27 @@ const setListings = listings => ({
     payload: listings    
 });
 
-export const fetchListings = () => async dispatch => {
-    // const filterParams = new URLSearchParams(filters);
-    const response = await csrfFetch(`/api/listings`);            
+const receiveListings = (listings) => ({
+    type: RECEIVE_LISTINGS,
+    listings
+})
+
+export const fetchListings = (filters) => async dispatch => {
+    const filterParams = new URLSearchParams(filters);
+    const response = await csrfFetch(`/api/listings${filterParams}`);            
     const data = await response.json();          
     dispatch(setListings(data.listings));    
     return response;
 };
+
+export const fetchListingsType = (filter) => async dispatch => {
+    const res = await csrfFetch(`/api/listings/filters/${filter}`)
+
+    let data = await res.json()
+    dispatch(setListings(data.listings));    
+    
+}
+
 // Listing end
 // 
 // 

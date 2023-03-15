@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy, :update, :show]
     resources :reservations, only: [:create, :destroy, :update, :show]
 
+    get '/listings/filters/:filter', to: 'listings#filters_index', as: 'filters_index'
+
 end
 # get '*path', to: "static_pages#frontend_index"
 
