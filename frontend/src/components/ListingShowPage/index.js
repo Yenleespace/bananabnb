@@ -7,6 +7,7 @@ import { getListingReviews } from '../../store/reviews'
 import { getListingReservations } from '../../store/reservations'
 import ReviewForm from '../Reviews/ReviewForm'
 import { ReservationForm } from '../Reservation/ReservationForm'
+import { destroyReview } from '../../store/reviews'
 import './ListingShow.css'
 
 import one from "../../assets/1.jpg"
@@ -22,9 +23,8 @@ const ListingShowPage = () => {
   const sessionUser = useSelector(state => state.session.user);
   const reviews = useSelector(getListingReviews(parseInt(listingId)));
   // const reservations = useSelector(getListingReservations(parseInt(listingId)));
-
+  const [errors, setErrors] = useState([])
   
-
   useEffect(() => {
     dispatch(fetchListing(listingId))
   }, [listingId, dispatch])
@@ -46,11 +46,6 @@ const ListingShowPage = () => {
             <img src={listing.imageUrls[2]} alt="foo" className="item" />
             <img src={listing.imageUrls[3]} alt="foo" className="item" />
             <img src={listing.imageUrls[4]} alt="foo" className="item" />
-            {/* <img src={one} className="item" />
-            <img src={two} className="item" />
-            <img src={three} className="item" />
-            <img src={four} className="item" />
-            <img src={five} className="item" /> */}
           </div>
         </div>
       </div>
@@ -64,7 +59,6 @@ const ListingShowPage = () => {
             <div className='listing-container'>
               <div className="listing-info">
                 <h3>Home hosted by {listing.hostName}</h3>
-                {/* Temporary */}
                 <h5>3 guests 3 bedrooms 3 bed 1 bath</h5>
               </div>
 
@@ -99,6 +93,7 @@ const ListingShowPage = () => {
               <p> Comment: {review.review} </p>
               <p>Rating: {review.rating}</p>
               <p> Name: {review.user.first_name} {review.user.last_name}</p>
+              <button onClick={destroyReview(review.id)}>Delete</button>
             </div>))}
           <div className='button-container'>
             <LeaveReview listing={listing} />

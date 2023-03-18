@@ -10,10 +10,16 @@ const addReview = review => ({
     payload: review
 });
 
-const removeReview = review => ({
+// const removeReview = review => ({
+//     type: REMOVE_REVIEW,
+//     payload: review
+// });
+
+
+const removeReview = (reviewId) => ({
     type: REMOVE_REVIEW,
-    payload: review
-});
+    reviewId
+})
 
 export const addReviews = reviews => ({
     type: ADD_REVIEWS,
@@ -46,22 +52,30 @@ export const destroyReview = (reviewId) => async dispatch => {
     const response = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: "DELETE",
     });
-    const data = await response.json();
-    dispatch(removeReview(data.review));
+    
+    if(response.ok){
+        dispatch(removeReview(reviewId))
+    }
     // dispatch(addListing(data.listing));
-    return response;
+    // return response;
 };
 
 function reviewsReducer(state = {}, action) {
+    Object.freeze(state)
+    let newState = {...state}
+
     switch (action.type) {
         case ADD_REVIEW: {
             const review = action.payload;
             return { ...state, [review.id]: review };
         }
         case REMOVE_REVIEW: {
-            const review = action.payload;
-            const { [review.id]: _remove, ...newState } = state;
-            return newState;
+            // const review = action.payload;
+            delete newState[action.reviewId]
+            return newState
+
+            // const { [review]: _remove, ...newState } = state;
+            // return newState;
         }
         case ADD_REVIEWS:
             const reviews = action.payload;            
