@@ -93,7 +93,8 @@ const ListingShowPage = () => {
               <p> Comment: {review.review} </p>
               <p>Rating: {review.rating}</p>
               <p> Name: {review.user.first_name} {review.user.last_name}</p>
-              <button onClick={destroyReview(review.id)}>Delete</button>
+              <button className='delete-btn'>Edit</button>
+              <button className='delete-btn' onClick={destroyReview(review.id)}>Delete</button>
             </div>))}
           <div className='button-container'>
             <LeaveReview listing={listing} />

@@ -58,6 +58,16 @@
 
 }
 
+.delete-btn {
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    padding: 0;
+    text-decoration:underline;
+    width: auto;
+    padding-bottom: 25px;
+}
 
 
 
