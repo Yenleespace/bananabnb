@@ -24,7 +24,14 @@ const ListingShowPage = () => {
   const reviews = useSelector(getListingReviews(parseInt(listingId)));
   // const reservations = useSelector(getListingReservations(parseInt(listingId)));
   const [errors, setErrors] = useState([])
-  
+
+  const handleDelete = (e, reviewId) => {
+    e.preventDefault()
+    setErrors([])
+
+    dispatch(destroyReview(reviewId))
+  }
+
   useEffect(() => {
     dispatch(fetchListing(listingId))
   }, [listingId, dispatch])
@@ -89,12 +96,12 @@ const ListingShowPage = () => {
           <h5>★ • {reviews.length} Reviews</h5>
           {reviews.map(review => (
             <div className="review" key={review.id}>
-              
+
               <p> Comment: {review.review} </p>
               <p>Rating: {review.rating}</p>
               <p> Name: {review.user.first_name} {review.user.last_name}</p>
               <button className='delete-btn'>Edit</button>
-              <button className='delete-btn' onClick={destroyReview(review.id)}>Delete</button>
+              <button className='delete-btn' onClick={e => handleDelete(e, review.id)}>Delete</button>
             </div>))}
           <div className='button-container'>
             <LeaveReview listing={listing} />
