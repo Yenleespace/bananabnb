@@ -32,8 +32,10 @@ export const createReservation = (reservation) => async dispatch => {
 
     const response = await csrfFetch("/api/reservations", {
         method: "POST",
-        body: JSON.stringify(reservation)
+        body: JSON.stringify({reservation: reservation})
     });
+
+    // if(response.ok) 
     const data = await response.json();
     dispatch(addReservation(data.reservation));
     // dispatch(addUser(data.user));
