@@ -56,12 +56,13 @@ function Navigation() {
               </a>
               <ul className="dropdown-menu">
                 {sessionLinks}
+                <div className='dropdown-login-signup'>
                 <li>
                   <NavLink to='/trips' style={{ textDecoration: 'none', color: "black" }} >
                     <p>My Trips</p>
                   </NavLink>
-
                 </li>
+                </div>
                 
                 <li><hr className="dropdown-divider" /></li>
                 <li><a className="dropdown-item" href="https://github.com/Yenleespace">github</a></li>
