@@ -20,13 +20,13 @@
 }
 
 #modal-content {
-  position: absolute;
+  position: inherit;
   background-color: white;
   border-radius: 12px !important;
   margin: 20px;
-  min-height: 568px;
+  /* min-height: 568px; */
   min-width: 522px;
-  padding: 30px 60px;
+  padding: 60px 60px;
 }
 
 #modal-content > h1 {

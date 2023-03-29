@@ -3,8 +3,16 @@ class Api::ReservationsController < ApplicationController
 
   # GET /reservations
   # GET /reservations.json
-  def index
-    @reservations = Reservation.all
+  def index    
+    if params[:listing_id]
+        @reservations = Reservation.where(listing_id: params[:listing_id])
+        render :index
+    end
+
+    if params[:user_id]            
+        @reservations = Reservation.where(user_id: params[:user_id]).order(check_in_date: :asc)        
+        render :index
+    end
   end
 
   # GET /reservations/1
@@ -14,12 +22,10 @@ class Api::ReservationsController < ApplicationController
 
   # POST /reservations
   # POST /reservations.json
-  def create
-    # debugger
+  def create    
     @reservation = Reservation.new(reservation_params)
-
     if @reservation.save
-      render :show
+      render :show      
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end

@@ -5,13 +5,16 @@ import listings from './listings'
 import users from './users'
 import reviews from './reviews'
 import reservations from './reservations'
+import { uiReducer } from './ui';
+
 
 const rootReducer = combineReducers({
     session,
     listings,
     users,
     reviews,
-    reservations
+    reservations,
+    ui: uiReducer,
 });
 
 

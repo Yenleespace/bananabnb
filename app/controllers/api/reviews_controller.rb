@@ -22,9 +22,10 @@ class Api::ReviewsController < ApplicationController
     end
   end
 
-  def update
+  def update    
+    @review.review = params[:comment]    
     if @review.update(review_params)
-      render :show, status: :ok, location: @review
+      render :show 
     else
       render json: @review.errors, status: :unprocessable_entity
     end

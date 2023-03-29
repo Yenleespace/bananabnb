@@ -6,9 +6,11 @@ import { Link } from 'react-router-dom'
 import { getListingReviews } from '../../store/reviews'
 import { getListingReservations } from '../../store/reservations'
 import ReviewForm from '../Reviews/ReviewForm'
+import EditReviewForm from '../Reviews/EditReviewForm'
 import { ReservationForm } from '../Reservation/ReservationForm'
 import { destroyReview } from '../../store/reviews'
 import './ListingShow.css'
+import { FormErrors, Input, TextArea } from '../Forms';
 
 import one from "../../assets/1.jpg"
 import two from "../../assets/2.jpg"
@@ -24,6 +26,8 @@ const ListingShowPage = () => {
   const reviews = useSelector(getListingReviews(parseInt(listingId)));
   // const reservations = useSelector(getListingReservations(parseInt(listingId)));
   const [errors, setErrors] = useState([])
+  const [editReview, setEditReview] = useState(null);
+  
 
   const handleDelete = (e, reviewId) => {
     e.preventDefault()
@@ -94,14 +98,44 @@ const ListingShowPage = () => {
 
         <div className='review-container'>
           <h5>★ • {reviews.length} Reviews</h5>
-          {reviews.map(review => (
+          {reviews.map((review,index) => (
             <div className="review" key={review.id}>
+              {!editReview &&
+              <>              
+                <p> Comment: {review.review} </p>
+                <p>Rating: {review.rating}</p>
+                <p> Name: {review.user.first_name} {review.user.last_name}</p>
+                <button className='delete-btn' onClick={() => setEditReview(review.id)}>Edit</button>
+                <button className='delete-btn' onClick={e => handleDelete(e, review.id)}>Delete</button>                
+              </>
+              }
+              {
+                editReview==review.id && <EditReviewForm listing={listing}
+                  closeForm={() => setEditReview(false)}
+                  enteredReview={review} />
 
-              <p> Comment: {review.review} </p>
-              <p>Rating: {review.rating}</p>
-              <p> Name: {review.user.first_name} {review.user.last_name}</p>
-              <button className='delete-btn'>Edit</button>
-              <button className='delete-btn' onClick={e => handleDelete(e, review.id)}>Delete</button>
+                // review.id == editReviewForm &&
+                // <>
+                //   Comment <input type="text"
+                //     cols="30"
+                //     rows="10"                   
+                //     value={review.review}
+                //     required />
+
+                //   Rating <input type="number"
+                //     min="1"
+                //     max="5"
+                //     value={review.rating}
+                //     required />
+                  
+                //   <p> Name: {review.user.first_name} {review.user.last_name}</p>
+                              
+                //   <button className='delete-btn' onClick={() => { setEditReviewForm(true); setEditReviewForm(true); }}>Edit</button>                
+                //   <button className='delete-btn' onClick={() => { setEditReviewForm(null); }}>Cancel</button>                
+                // </>                
+              }
+              
+              
             </div>))}
           <div className='button-container'>
             <LeaveReview listing={listing} />
@@ -114,12 +148,12 @@ const ListingShowPage = () => {
 }
 
 function LeaveReview({ listing }) {
-  const [showReviewForm, setShowReviewForm] = useState(false);
+  const [showReviewForm, setShowReviewForm] = useState(false);  
 
   return showReviewForm ? (
     <ReviewForm
       listing={listing}
-      closeForm={() => setShowReviewForm(false)}
+      closeForm={() => setShowReviewForm(false)}      
     />
   ) : (
     <button className="review-button" onClick={() => setShowReviewForm(true)}>

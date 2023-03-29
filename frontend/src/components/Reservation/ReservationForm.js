@@ -34,7 +34,7 @@ export const ReservationForm = () => {
     const [children, setChildren] = useState(0)
     const [errors, setErrors] = useState([])
     const [focusedInput, setFocusedInput] = useState()
-    // const modal = useSelector(state => state.ui.modal)
+    const modal = useSelector(state => state.ui.modal)
 
     const openMenu = () => {
         if (showMenu) {
@@ -80,7 +80,8 @@ export const ReservationForm = () => {
     
 
     return (
-        <form className="reservation-box" onSubmit={handleSubmit}>            
+        <form className="reservation-box" onSubmit={handleSubmit}>       
+            {modal === 'successfulReservation' && (<SuccessfulReservationModal ></SuccessfulReservationModal>)}     
             
             <div className="reservation-info">
                 <p className="price-night">${listing.price} night</p>

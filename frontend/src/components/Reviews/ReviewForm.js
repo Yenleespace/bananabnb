@@ -5,7 +5,7 @@ import { createReview } from '../../store/reviews';
 import { FormErrors, Input, TextArea } from '../Forms';
 import { SessionModal } from '../LoginForms';
 
-function ReviewForm({ listing, closeForm }) {
+function ReviewForm({ listing, closeForm  }) {
   const sessionUser = useSelector(state => state.session.user);
   const [rating, onRatingChange] = useInput(5);
   const [review, onReviewChange] = useInput("");

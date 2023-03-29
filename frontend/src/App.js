@@ -1,12 +1,15 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Navigation from "./components/Navigation";
 import SignupFormPage from "./components/SignupFormPage";
 import ListingIndexPage from "./components/ListingIndexPage"
 import ListingForm from "./components/ListingFormPage";
 import ListingShowPage from "./components/ListingShowPage";
+import { TripsPage } from "./components/TripsPage/index.js";
 
 function App() {  
+  const user = useSelector(state => state.session.user)
   return (
     <div className="container py-3">
     <Navigation />
@@ -26,6 +29,10 @@ function App() {
 
       <Route path="/listings/:listingId">
         <ListingShowPage />
+      </Route>
+
+      <Route path='/trips'>
+        {!user ? <Redirect to="/"></Redirect> : <TripsPage></TripsPage>}
       </Route>
 
 

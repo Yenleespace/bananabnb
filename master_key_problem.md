@@ -16,4 +16,4 @@ rails credentials:edit
 add : aws info change
 rails db:reset
 
-npm install --legacy-peer-deps react-dates
+frontend : npm install --legacy-peer-deps react-dates

@@ -1,4 +1,7 @@
 import csrfFetch from "./csrf.js";
+import { showSuccessfulReservation } from "./ui"
+
+
 
 
 const ADD_RESERVATION = 'reservations/addReservation';
@@ -28,6 +31,14 @@ export const getListingReservations = listingId => state => (Object.values(state
     }))
 );
 
+export const fetchUsersReservations = (userId) => async dispatch => {        
+    const res = await csrfFetch(`/api/users/${userId}/reservations`)
+
+    let data = await res.json()
+    dispatch(addReservations(data))
+}
+
+
 export const createReservation = (reservation) => async dispatch => {
 
     const response = await csrfFetch("/api/reservations", {
@@ -35,11 +46,14 @@ export const createReservation = (reservation) => async dispatch => {
         body: JSON.stringify({reservation: reservation})
     });
 
-    // if(response.ok) 
-    const data = await response.json();
-    dispatch(addReservation(data.reservation));
-    // dispatch(addUser(data.user));
-    // dispatch(addBench(data.listing));
+    if(response.ok) {
+        const data = await response.json();
+        dispatch(addReservation(data));
+        dispatch(showSuccessfulReservation())
+
+    }
+    
+    
     return response;
 };
 
@@ -48,7 +62,7 @@ export const destroyReservation = (reservationId) => async dispatch => {
         method: "DELETE",
     });
     const data = await response.json();
-    dispatch(removeReservation(data.reservation));
+    dispatch(removeReservation(data));
     // dispatch(addListing(data.listing));
     return response;
 };
@@ -56,7 +70,7 @@ export const destroyReservation = (reservationId) => async dispatch => {
 function reservationsReducer(state = {}, action) {
     switch (action.type) {
         case ADD_RESERVATION: {
-            const reservation = action.payload;
+            const reservation = action.payload;            
             return { ...state, [reservation.id]: reservation };
         }
         case REMOVE_RESERVATION: {
@@ -65,7 +79,7 @@ function reservationsReducer(state = {}, action) {
             return newState;
         }
         case ADD_RESERVATIONS:
-            const reservations = action.payload;
+            const reservations = action.payload;            
             return { ...state, ...reservations };
         default:
             return state;
