@@ -58,25 +58,7 @@ export const FutureInfo = ({reservation}) => {
             })
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        setErrors([])
 
-        const newReservation = {listing_id: reservation.listingId, id: reservation.id, user_id: reservation.userId, start_date: reservation.checkInDate, end_date: reservation.checkOutDate, num_guests: totalGuests}
-        // dispatch(updateReservation(newReservation))
-        //     .catch(async (res) => {
-        //         let data;
-        //         try {
-        //             data = await res.clone().json()
-        //         } catch {
-        //             data = await res.text()
-        //         }
-        //         if (data?.errors) setErrors(data.errors)
-        //         else if (data) setErrors([data])
-        //         else setErrors([res.statusText])
-        //     })
-        //     .then(openMenu())
-    }
 
     return (
         <div >
@@ -93,42 +75,10 @@ export const FutureInfo = ({reservation}) => {
                             {dateFormat(reservation.checkInDate, reservation.checkOutDate)}
                         </Link>
                         <div className="reservation-buttons">
-                            <button className="delete-btn" onClick={() => openMenu()}>Edit reservation</button>
                             <button className="delete-btn" onClick={handleClick}>Cancel reservation</button>
                         </div>
                     </div>
-                    {showMenu && (
-                        <form onSubmit={handleSubmit} className="dropdown-reservation dropdown-edit" style={{ zIndex: 1 }}>
-                            <div className="dropdown-title">
-                                <button type="button" className="close-edit " onClick={() => setShowMenu(false)}>X</button>
-                                <h3 >Old number of guests: {numGuests}</h3>
-                                <h3 >New number of guests: {totalGuests}</h3>
-                            </div>
-                            <div className="age">
-                                <div >
-                                    <h3>Adults</h3>
-                                    <p>Age 13+</p>
-                                </div>
-                                <div className="age-button">
-                                    <button type="button" disabled={adults === 1} onClick={() => setAdults(adults - 1)}>-</button>
-                                    <h4>{adults}</h4>
-                                    <button type="button" disabled={totalGuests === reservation.listingMaxGuests} onClick={() => setAdults(adults + 1)}>+</button>
-                                </div>
-                            </div>
-                            <div className="age">
-                                <div>
-                                    <h3>Children</h3>
-                                    <p>Ages 2-12</p>
-                                </div>
-                                <div className="age-button">
-                                    <button type="button" disabled={children === 0} onClick={() => setChildren(children - 1)}>-</button>
-                                    <h4>{children}</h4>
-                                    <button type="button" disabled={totalGuests === reservation.listingMaxGuests} onClick={() => setChildren(children + 1)}>+</button>
-                                </div>
-                            </div>
-                            <button className="update-submit">Update reservation</button>
-                        </form>
-                    )}
+                    {showMenu}
                 </div>
                 <Link to={`/listings/${reservation.listingId}`}>
                     <div>

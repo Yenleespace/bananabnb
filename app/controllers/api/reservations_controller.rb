@@ -44,6 +44,7 @@ class Api::ReservationsController < ApplicationController
   # DELETE /reservations/1
   # DELETE /reservations/1.json
   def destroy
+    # debugger
     @reservation.destroy
   end
 

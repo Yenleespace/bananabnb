@@ -58,12 +58,10 @@ export const createReservation = (reservation) => async dispatch => {
 };
 
 export const destroyReservation = (reservationId) => async dispatch => {
+    // debugger
     const response = await csrfFetch(`/api/reservations/${reservationId}`, {
         method: "DELETE",
     });
-    const data = await response.json();
-    dispatch(removeReservation(data));
-    // dispatch(addListing(data.listing));
     return response;
 };
 
@@ -71,11 +69,11 @@ function reservationsReducer(state = {}, action) {
     switch (action.type) {
         case ADD_RESERVATION: {
             const reservation = action.payload;            
-            return { ...state, [reservation.id]: reservation };
+            return { ...state};
         }
         case REMOVE_RESERVATION: {
             const reservation = action.payload;
-            const { [reservation.id]: _remove, ...newState } = state;
+            const { [reservation]: _remove, ...newState } = state;
             return newState;
         }
         case ADD_RESERVATIONS:
