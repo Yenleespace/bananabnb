@@ -78,7 +78,7 @@ function reservationsReducer(state = {}, action) {
         }
         case ADD_RESERVATIONS:
             const reservations = action.payload;            
-            return { ...state, ...reservations };
+            return {...reservations };
         default:
             return state;
     }

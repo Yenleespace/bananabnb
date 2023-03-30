@@ -112,27 +112,7 @@ const ListingShowPage = () => {
               {
                 editReview==review.id && <EditReviewForm listing={listing}
                   closeForm={() => setEditReview(false)}
-                  enteredReview={review} />
-
-                // review.id == editReviewForm &&
-                // <>
-                //   Comment <input type="text"
-                //     cols="30"
-                //     rows="10"                   
-                //     value={review.review}
-                //     required />
-
-                //   Rating <input type="number"
-                //     min="1"
-                //     max="5"
-                //     value={review.rating}
-                //     required />
-                  
-                //   <p> Name: {review.user.first_name} {review.user.last_name}</p>
-                              
-                //   <button className='delete-btn' onClick={() => { setEditReviewForm(true); setEditReviewForm(true); }}>Edit</button>                
-                //   <button className='delete-btn' onClick={() => { setEditReviewForm(null); }}>Cancel</button>                
-                // </>                
+                  enteredReview={review} />            
               }
               
               

@@ -59,7 +59,6 @@ export const FutureInfo = ({reservation}) => {
     }
 
 
-
     return (
         <div >
             <div className="future-trip">
