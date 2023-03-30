@@ -82,19 +82,19 @@ export const FutureInfo = ({reservation}) => {
         <div >
             <div className="future-trip">
                 <div className="future-trips-left">
-                    <Link to={`/listings/${reservation.listingId}`}>
+                    <Link to={`/listings/${reservation.listingId}`} style={{ textDecoration: 'none' }}>
                         <div className="future-top">
                             <h4>{reservation.listingCity}</h4>
                             <p>{reservation.listingPropertyType} hosted by {reservation.listingOwner}</p>
                         </div>
                     </Link>
                     <div className="future-bottom">
-                        <Link to={`/listings/${reservation.listingId}`}>
+                        <Link to={`/listings/${reservation.listingId}`} style={{ textDecoration: 'none' }}>
                             {dateFormat(reservation.checkInDate, reservation.checkOutDate)}
                         </Link>
                         <div className="reservation-buttons">
-                            <button onClick={() => openMenu()}>Edit reservation</button>
-                            <button onClick={handleClick}>Cancel reservation</button>
+                            <button className="delete-btn" onClick={() => openMenu()}>Edit reservation</button>
+                            <button className="delete-btn" onClick={handleClick}>Cancel reservation</button>
                         </div>
                     </div>
                     {showMenu && (

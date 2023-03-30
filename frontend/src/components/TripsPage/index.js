@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { Link } from "react-router-dom"
 import { fetchUsersReservations } from "../../store/reservations"
 import './TripsPage.css'
-import moment from 'moment'
 import { FutureInfo } from "./FutureInfo"
 
 export const TripsPage = () => {
@@ -65,22 +64,20 @@ export const TripsPage = () => {
         return (
             <div className='trip'>
                 <div className='trips-left'>
-                    <img src="https://breezebnb-seed.s3.us-west-1.amazonaws.com/assets/Screenshot+2022-11-04+at+11.57.25+AM.png" alt="icon"></img>
                     <h4>No trips booked...yet!</h4>
                     <p>Time to dust off your bags and start planning your next adventure</p>
                     <Link to='/'>
-                        <button>Start searching</button>
+                        <button className="start-btn">Start searching</button>
                     </Link>
                 </div>
                 
-                <img className={"trips-right no-show"} src="https://breezebnb-seed.s3.us-west-1.amazonaws.com/assets/d727f355-3f10-44b5-9750-d1efca2438fc.webp" alt="family fun"></img>
                 
             </div>
         )
     }
     
     return (
-        <div id="trips-page">
+        <div id="trips">
             <h2>Trips</h2>
             {sort()}
         </div>

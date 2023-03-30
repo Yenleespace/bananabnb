@@ -10,16 +10,17 @@
     }
 }
 
-#trips-page{
+#trips{
     padding-left: 80px;
     padding-right: 80px;
     
 }
 
-#trips-page h2 {
+#trips h2 {
     font-size: 32px;
     padding-top: 36px;
     padding-bottom: 24px;
+    font-weight: 700;
 }
 .trip {
     display: flex;
@@ -56,13 +57,13 @@
 .trips-left button {
     width: 50%;
     height: 50px;
-    color: white;
-    background-image: radial-gradient(circle at center center, rgb(230, 30, 77) 27.5%, rgb(227, 28, 95) 40%);
+    color: black;
     border-radius: 10px;
     text-align: center;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    background-color: #ffe135;
 }
 
 .trips-right {
@@ -75,7 +76,6 @@
     border-bottom-right-radius: 10px;
 }
 
-/* Future container */
 
 .future-trip {
     display: flex;
@@ -101,6 +101,7 @@
 .future-top h4{
     font-size: 35px;
     font-weight: 500;
+    color: black;
 }
 
 .future-top p {
@@ -129,6 +130,7 @@
     align-items: center;
     margin-top: 20px;
     padding-right: 30px;
+    color: black;
 }
 
 .future-bottom {
