@@ -41,8 +41,8 @@ function EditReviewForm({ listing, closeForm, enteredReview }) {
                     />
 
                     <div className="review-form-buttons">
-                        <button onClick={closeForm} className="button" type="button">Cancel</button>
-                        <button className="button" type="submit">Submit Review</button>
+                        <button onClick={closeForm} className="reserve" type="button">Cancel</button>
+                        <button className="reserve" type="submit">Submit Review</button>
                     </div>
                 </form>
             </div>
