@@ -6,4 +6,4 @@ set -o errexit
 npm run build
 bundle install
 rails db:migrate
-rails db:reset #if needed
+rails db:seed #if needed
