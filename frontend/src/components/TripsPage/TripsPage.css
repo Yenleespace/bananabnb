@@ -79,8 +79,9 @@
 
 .future-trip {
     display: flex;
-    justify-content: space-between;
-    height: 325px;
+    justify-content: space-between !important;
+    gap: 30px;
+    
     border-radius: 10px;
     border: 1px solid #EBEBEB;
     box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
@@ -114,11 +115,16 @@
 
 .future-trips-right {
     
-    height: 325px;
-    width: 40vw;
+    height: 364px;
+    width: 100%;
     border-bottom-right-radius: 10px;
     border-top-right-radius: 10px;
     border: 1px solid #EBEBEB;
+}
+.image-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;;
 }
 
 .future-date {

@@ -73,17 +73,26 @@ export const FutureInfo = ({reservation}) => {
                         <Link to={`/listings/${reservation.listingId}`} style={{ textDecoration: 'none' }}>
                             {dateFormat(reservation.checkInDate, reservation.checkOutDate)}
                         </Link>
+                         
                         <div className="reservation-buttons">
-                            <button className="delete-btn" onClick={handleClick}>Cancel reservation</button>
+                        {reservation.checkOutDate >= new Date().toISOString().split('T')[0] &&<button className="delete-btn" onClick={handleClick}>Cancel reservation</button>}
+                        {reservation.checkOutDate < new Date().toISOString().split('T')[0] &&<button className="delete-btn" style={{textDecoration: 'none'}}>Trip completed</button>}
                         </div>
+                        
+                        
+                        
                     </div>
                     {showMenu}
                 </div>
+                <div class="image-container">
                 <Link to={`/listings/${reservation.listingId}`}>
-                    <div>
+                    <div >
                         <img alt="listing" className={"future-trips-right no-show"} src={reservation.imgUrls[0]}></img>
                     </div>
                 </Link>
+                </div>
+                
+                
             </div>
         </div>
     )
